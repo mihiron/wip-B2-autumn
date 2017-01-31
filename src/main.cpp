@@ -12,6 +12,7 @@
  #include "WiFiClient.h"
  #include "Authentication.h"
  #include <Milkcocoa.h>
+ #define MILKCOCOA_APP_ID      "seaiyk2y7xv"
  #define MILKCOCOA_DATASTORE   "esp8266"
  #define MILKCOCOA_SERVERPORT  1883
  const char MQTT_SERVER[] PROGMEM    = MILKCOCOA_APP_ID ".mlkcca.com";
