@@ -12,7 +12,6 @@
  #include "WiFiClient.h"
  #include "Authentication.h"
  #include <Milkcocoa.h>
- #define MILKCOCOA_APP_ID      "seaiyk2y7xv"
  #define MILKCOCOA_DATASTORE   "esp8266"
  #define MILKCOCOA_SERVERPORT  1883
  const char MQTT_SERVER[] PROGMEM    = MILKCOCOA_APP_ID ".mlkcca.com";
@@ -89,8 +88,7 @@ void configureSensor(void)
 void setup(void)
 {
   Serial.begin(115200);
-  Serial.println("Light Sensor Test"); Serial.println("");
-
+  Serial.println("Light Sensor Test");
   Serial.println(F("Milkcocoa SDK demo"));
 
   setupWiFi();
@@ -139,11 +137,11 @@ void loop(void)
     Serial.println("Sensor overload");
   }
 
-
-  milkcocoa.loop();
+  //
+  milkcocoa.loop(10000);
 
   DataElement elem = DataElement();
-  elem.setValue("v", 1);
+  elem.setValue("lux", event.light);
 
   milkcocoa.push(MILKCOCOA_DATASTORE, &elem);
 
